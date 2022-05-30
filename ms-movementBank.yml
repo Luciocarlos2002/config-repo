@@ -1,8 +1,8 @@
 spring:
   application:
-    name: ms-customer
+    name: ms-movement-bank
   servlet:
-    context-path: /ms-customer
+    context-path: /ms-movement-bank
   data:
     mongodb:
       uri: mongodb+srv://lucio2022:lucio123@bootcamp-may.ucmqo.mongodb.net/Bootcamp-May?retryWrites=true&w=majority
@@ -16,12 +16,23 @@ eureka:
     hostname: ${COMPUTERNAME:localhost}
 
 server:
-  port: 8080
+  port: 8082
 
 resilience4j:
   circuitbreaker:
     instances:
-      customer:
+      movementcredit:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5s
+        slidingWindowType: COUNT_BASED
+        timeoutDuration: 2s
+      movementdebit:
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
         automaticTransitionFromOpenToHalfOpenEnabled: true

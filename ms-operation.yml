@@ -1,8 +1,8 @@
 spring:
   application:
-    name: ms-movementDebit
+    name: ms-operation
   servlet:
-    context-path: /ms-movementDebit
+    context-path: /ms-operation
   data:
     mongodb:
       uri: mongodb+srv://lucio2022:lucio123@bootcamp-may.ucmqo.mongodb.net/Bootcamp-May?retryWrites=true&w=majority
@@ -16,4 +16,4 @@ eureka:
     hostname: ${COMPUTERNAME:localhost}
 
 server:
-  port: 8082
+  port: 8084
